@@ -1,3 +1,8 @@
+
+abstract class Combate{
+  void atacar(Personagem alvo);
+}
+
 class Personagem {
   String nome;
   String raca;
