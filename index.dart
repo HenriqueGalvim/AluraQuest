@@ -36,7 +36,7 @@ class Personagem {
     }
   }
 }
-class Guerreiro extends Personagem{
+class Guerreiro extends Personagem implements Combate{
   List<String> equipamentos;
   String estilo;
   Guerreiro(nome, raca, classe, idade, altura,
@@ -52,9 +52,19 @@ class Guerreiro extends Personagem{
     }
     print("\nUso o estilo de combate ${this.estilo}");
   }
+
+  @override
+  void atacar(Personagem alvo) {
+    print("${this.nome} esta atacando");
+    alvo.vida = alvo.vida - 15;
+    print("${alvo.nome} perdeu 15 pontos de vida");
+    if(alvo.vida == 0){
+      print("${this.nome} derrotou ${alvo.nome}");
+    }
+  }
 }
 
-class Mago extends Personagem{
+class Mago extends Personagem implements Combate{
   List<String> equipamentos;
   List<String> feiticos;
 
@@ -77,16 +87,31 @@ class Mago extends Personagem{
       print("- ${this.nome} usou ${feitico}");
     }
   }
+
+  @override
+  void atacar(Personagem alvo) {
+    print("${this.nome} esta atacando");
+    alvo.vida = alvo.vida - 10;
+    print("${alvo.nome} perdeu 10 pontos de vida");
+    if(alvo.vida == 0){
+      print("${this.nome} derrotou ${alvo.nome}");
+    }
+  }
 }
 
 void main() {
   Personagem personagem1 = new Personagem("Henrique", "Humano", "Guerreiro", 20, 1.80, false, 300, 250, ['Golpe esmagador','Provocação','Investida Furiosa']);
   personagem1.ExibirFichaPersonagem();
   print("------ \n");
-  Guerreiro guerreiro1 = new Guerreiro("Henrique Galvim", "Anão", "Guerreiro", 20, 1.80, false, 300, 250, ['Golpe esmagador','Provocação','Investida Furiosa'],['couraça da justiça','espada do espirito'],'sentado');
+  Guerreiro guerreiro1 = new Guerreiro("Lucas", "Anão", "Guerreiro", 20, 1.80, false, 300, 250, ['Golpe esmagador','Provocação','Investida Furiosa'],['couraça da justiça','espada do espirito'],'sentado');
   guerreiro1.ExibirFichaPersonagem();
   print("------ \n");
-  Mago mago1 = new Mago("Henrique dos Galvim", "Elfo", "Mago", 20, 1.80, true, 200, 350, ['Teletransporte','Previsão','Batida com cajado'],['cajado gélido','manopla de mana'],['bola de fogo','rajada de gelo']);
+  Mago mago1 = new Mago("Victor", "Elfo", "Mago", 20, 1.80, true, 200, 350, ['Teletransporte','Previsão','Batida com cajado'],['cajado gélido','manopla de mana'],['bola de fogo','rajada de gelo']);
   mago1.ExibirFichaPersonagem();
   mago1.LancarFeitico();
+  print("------ \n");
+  guerreiro1.atacar(mago1);
+  print("------ \n");
+  mago1.atacar(guerreiro1);
+
 }
