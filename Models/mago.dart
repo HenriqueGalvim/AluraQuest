@@ -4,6 +4,7 @@ import 'personagem.dart';
 
 class Mago extends Personagem implements Combate{
   List<String> equipamentos;
+  Map<String, int> feiticos = {};
 
   Mago(nome, raca, classe, idade, altura,
       magico, vida, energia,habilidades,this.equipamentos): super(nome,raca,classe,idade,altura,magico,vida,energia,habilidades){}
@@ -16,6 +17,10 @@ class Mago extends Personagem implements Combate{
     for (String equipamento in this.equipamentos) {
       print(" - ${equipamento}");
     }
+  }
+
+  AdicionarFeitico(Feiticos feitico, int poder ){
+    this.feiticos[feitico.name] = poder;
   }
 
   LancarFeitico(String nome, Feiticos feitico){

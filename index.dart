@@ -53,4 +53,11 @@ void main() {
   guerreiro1.ExibirFichaPersonagem();
   print("------ \n");
   mago1.ExibirFichaPersonagem();
+  
+  mago1.AdicionarFeitico(Feiticos.fogo, 20);
+  mago1.AdicionarFeitico(Feiticos.cura, 10);
+  mago1.AdicionarFeitico(Feiticos.gelo, 30);
+  for (var feiticos in mago1.feiticos.keys) {
+    print(feiticos);
+  }
 }
