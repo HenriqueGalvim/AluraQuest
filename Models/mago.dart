@@ -4,10 +4,9 @@ import 'personagem.dart';
 
 class Mago extends Personagem implements Combate{
   List<String> equipamentos;
-  List<String> feiticos;
 
   Mago(nome, raca, classe, idade, altura,
-      magico, vida, energia,habilidades,this.equipamentos,this.feiticos): super(nome,raca,classe,idade,altura,magico,vida,energia,habilidades){}
+      magico, vida, energia,habilidades,this.equipamentos): super(nome,raca,classe,idade,altura,magico,vida,energia,habilidades){}
 
   @override
   ExibirFichaPersonagem(){
@@ -19,11 +18,10 @@ class Mago extends Personagem implements Combate{
     }
   }
 
-  LancarFeitico(){
-    print("\nLançando Feitiços");
-    for (String feitico in this.feiticos) {
-      print("- ${this.nome} usou ${feitico}");
-    }
+  LancarFeitico(String nome, Feiticos feitico){
+    this.energia -= 20;
+    print("\nLançando Feitiço: ${nome}");
+    print("\nTipo de feitiço: ${feitico.name.toUpperCase()}");
   }
 
   @override

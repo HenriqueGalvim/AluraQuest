@@ -16,7 +16,7 @@ void main() {
       250,
       ['Golpe esmagador', 'Provocação', 'Investida Furiosa']);
   personagem1.ExibirFichaPersonagem();
-  print("------ \n");
+
   Guerreiro guerreiro1 = new Guerreiro(
       "Lucas",
       "Anão",
@@ -30,7 +30,6 @@ void main() {
       ['couraça da justiça', 'espada do espirito'],
       'sentado');
 
-  print("------ \n");
   Mago mago1 = new Mago(
       "Victor",
       "Elfo",
@@ -41,11 +40,9 @@ void main() {
       200,
       350,
       ['Teletransporte', 'Previsão', 'Batida com cajado'],
-      ['cajado gélido', 'manopla de mana'],
-      ['bola de fogo', 'rajada de gelo']);
+      ['cajado gélido', 'manopla de mana']);
 
-  print("------ \n");
-  mago1.LancarFeitico();
+  mago1.LancarFeitico("Bola de fogo",Feiticos.fogo);
   print("------ \n");
 
   while (mago1.statusVida != StatusVida.derrotado &&
