@@ -1,3 +1,4 @@
+import '../enums/personagem.dart';
 import '../interfaces/combate.dart';
 import 'personagem.dart';
 
@@ -27,10 +28,9 @@ class Mago extends Personagem implements Combate{
 
   @override
   void atacar(Personagem alvo) {
-    print("${this.nome} esta atacando");
     alvo.vida = alvo.vida - 10;
-    print("${alvo.nome} perdeu 10 pontos de vida");
-    if(alvo.vida == 0){
+    alvo.AtualizarStatus();
+    if(alvo.statusVida == StatusVida.derrotado){
       print("${this.nome} derrotou ${alvo.nome}");
     }
   }

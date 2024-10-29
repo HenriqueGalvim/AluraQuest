@@ -34,4 +34,14 @@ class Personagem {
     }
     print("\nStatus de vida: ${statusVida.name.toUpperCase()} ");
   }
+
+  AtualizarStatus(){
+    if (vida > 50) {
+      statusVida = StatusVida.vivo;
+    }else if(vida >= 1 && vida <= 50 ){
+      statusVida = StatusVida.ferido;
+    }else{
+      statusVida = StatusVida.derrotado;
+    }
+  }
 }
