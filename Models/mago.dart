@@ -2,39 +2,54 @@ import '../enums/personagem.dart';
 import '../interfaces/combate.dart';
 import 'personagem.dart';
 
-class Mago extends Personagem implements Combate{
-  List<String> equipamentos;
-  Map<String, int> feiticos = {};
+class Mago extends Personagem implements Combate {
+  List<String> _equipamentos = [];
+  Map<String, int> _feiticos = {};
 
-  Mago(nome, raca, classe, idade, altura,
-      magico, vida, energia,habilidades,this.equipamentos): super(nome,raca,classe,idade,altura,magico,vida,energia,habilidades){}
+  Mago(nome, raca, classe, idade, altura, magico, vida, energia, habilidades,
+      this._equipamentos)
+      : super(nome, raca, classe, idade, altura, magico, vida, energia,
+            habilidades) {}
 
+  List<String> get getEquipamentos {
+    return _equipamentos;
+  }
+  Map<String, int> get getFeiticos{
+    return _feiticos;
+  }
+  void set setEquipamentos(String nomeEquipamento){
+    _equipamentos.add(nomeEquipamento);
+  }
+
+  void set setNomeFeitico(String nome){
+    _feiticos[nome];
+  }
   @override
-  ExibirFichaPersonagem(){
+  ExibirFichaPersonagem() {
     print("Sou um mago");
     super.ExibirFichaPersonagem();
     print("\nLista de Equipamentos");
-    for (String equipamento in this.equipamentos) {
+    for (String equipamento in getEquipamentos) {
       print(" - ${equipamento}");
     }
   }
 
-  AdicionarFeitico(Feiticos feitico, int poder ){
-    this.feiticos[feitico.name] = poder;
+  AdicionarFeitico(Feiticos feitico, int poder) {
+    this._feiticos[feitico.name] = poder;
   }
 
-  LancarFeitico(String nome, Feiticos feitico){
-    this.energia -= 20;
+  LancarFeitico(String nome, Feiticos feitico) {
+    super.setEnergia = getEnergia - 20;
     print("\nLançando Feitiço: ${nome}");
     print("\nTipo de feitiço: ${feitico.name.toUpperCase()}");
   }
 
   @override
   void atacar(Personagem alvo) {
-    alvo.vida = alvo.vida - 10;
+    alvo.setVida = alvo.getVida - 10;
     alvo.AtualizarStatus();
-    if(alvo.statusVida == StatusVida.derrotado){
-      print("${this.nome} derrotou ${alvo.nome}");
+    if (alvo.getStatusVida == StatusVida.derrotado) {
+      print("${this.getNome} derrotou ${alvo.getNome}");
     }
   }
 }

@@ -45,19 +45,18 @@ void main() {
   mago1.LancarFeitico("Bola de fogo",Feiticos.fogo);
   print("------ \n");
 
-  while (mago1.statusVida != StatusVida.derrotado &&
-      guerreiro1.statusVida != StatusVida.derrotado) {
+  while (mago1.getStatusVida!= StatusVida.derrotado &&
+      guerreiro1.getStatusVida != StatusVida.derrotado) {
     guerreiro1.atacar(mago1);
     mago1.atacar(guerreiro1);
   }
   guerreiro1.ExibirFichaPersonagem();
   print("------ \n");
   mago1.ExibirFichaPersonagem();
-  
   mago1.AdicionarFeitico(Feiticos.fogo, 20);
   mago1.AdicionarFeitico(Feiticos.cura, 10);
   mago1.AdicionarFeitico(Feiticos.gelo, 30);
-  for (var feiticos in mago1.feiticos.keys) {
+  for (var feiticos in mago1.getFeiticos.keys) {
     print(feiticos);
   }
 }
