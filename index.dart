@@ -12,7 +12,7 @@ void main() {
       20,
       1.80,
       false,
-      300,
+      -2,
       250,
       ['Golpe esmagador', 'Provocação', 'Investida Furiosa']);
   personagem1.ExibirFichaPersonagem();

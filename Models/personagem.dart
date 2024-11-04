@@ -80,7 +80,11 @@ class Personagem {
   }
 
   void set setVida(int vida) {
-    _vida = vida;
+    if (vida < 0) {
+      throw ArgumentError("Pontos de vida não podem ser negativos");
+    } else {
+      _vida = vida;
+    }
   }
 
   void set setEnergia(int energia) {
