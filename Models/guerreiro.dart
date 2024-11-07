@@ -23,9 +23,9 @@ class Guerreiro extends Personagem implements Combate {
     _estilo = estilo;
   }
 
-  Guerreiro(nome, raca, classe, idade, altura, magico, vida, energia,
-      habilidades, this._equipamentos, this._estilo)
-      : super(nome, raca, classe, idade, altura, magico, vida, energia,
+  Guerreiro(nome, raca, classe, idade, magico, vida, energia,
+      habilidades, this._equipamentos, this._estilo, {altura})
+      : super(nome, raca, classe, idade, altura: altura, magico, vida, energia,
             habilidades) {
               AtualizarStatus();
             }

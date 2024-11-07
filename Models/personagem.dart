@@ -5,15 +5,15 @@ class Personagem {
   String _raca;
   String _classe;
   int _idade;
-  double _altura;
+  double? altura;
   bool _magico;
   int _vida;
   int _energia;
   List<String> _habilidades = [];
   StatusVida _statusVida = StatusVida.vivo;
 
-  Personagem(this._nome, this._raca, this._classe, this._idade, this._altura,
-      this._magico, this._vida, this._energia, this._habilidades) {
+  Personagem(this._nome, this._raca, this._classe, this._idade,
+      this._magico, this._vida, this._energia, this._habilidades, {this.altura}) {
 
       }
 
@@ -33,8 +33,11 @@ class Personagem {
     return _idade;
   }
 
-  double get getAltura {
-    return _altura;
+  String get getAltura {
+    if (altura == null) {
+      return "Altura não especificada";
+    }
+    return altura.toString();
   }
 
   bool get getMagico {
@@ -74,7 +77,7 @@ class Personagem {
   }
 
   void set setAltura(double altura) {
-    _altura = altura;
+    altura = altura;
   }
 
   void set setMagico(bool magico) {

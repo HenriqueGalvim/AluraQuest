@@ -6,26 +6,28 @@ class Mago extends Personagem implements Combate {
   List<String> _equipamentos = [];
   Map<String, int> _feiticos = {};
 
-  Mago(nome, raca, classe, idade, altura, magico, vida, energia, habilidades,
-      this._equipamentos)
-      : super(nome, raca, classe, idade, altura, magico, vida, energia,
-            habilidades) {
-AtualizarStatus();
-            }
+
+  Mago(nome, raca, classe, idade, magico, vida, energia, habilidades,
+      this._equipamentos, {altura}) : super(nome, raca, classe, idade, altura: altura, magico, vida, energia, habilidades){
+        AtualizarStatus();
+      }
 
   List<String> get getEquipamentos {
     return _equipamentos;
   }
-  Map<String, int> get getFeiticos{
+
+  Map<String, int> get getFeiticos {
     return _feiticos;
   }
-  void set setEquipamentos(String nomeEquipamento){
+
+  void set setEquipamentos(String nomeEquipamento) {
     _equipamentos.add(nomeEquipamento);
   }
 
-  void set setNomeFeitico(String nome){
+  void set setNomeFeitico(String nome) {
     _feiticos[nome];
   }
+
   @override
   ExibirFichaPersonagem() {
     print("Sou um mago");
