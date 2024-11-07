@@ -13,7 +13,9 @@ class Personagem {
   StatusVida _statusVida = StatusVida.vivo;
 
   Personagem(this._nome, this._raca, this._classe, this._idade, this._altura,
-      this._magico, this._vida, this._energia, this._habilidades) {}
+      this._magico, this._vida, this._energia, this._habilidades) {
+
+      }
 
   String get getNome {
     return _nome;
@@ -84,6 +86,7 @@ class Personagem {
       throw ArgumentError("Pontos de vida não podem ser negativos");
     } else {
       _vida = vida;
+      AtualizarStatus();
     }
   }
 

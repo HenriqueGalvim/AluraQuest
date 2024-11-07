@@ -1,11 +1,12 @@
 import '../enums/personagem.dart';
+import '../exceptions/personagem_exceptions.dart';
 import '../interfaces/combate.dart';
 import 'personagem.dart';
 
 class Guerreiro extends Personagem implements Combate {
   List<String> _equipamentos = [];
   String _estilo;
-  
+
   List<String> get getEquipamentos {
     return _equipamentos;
   }
@@ -25,7 +26,9 @@ class Guerreiro extends Personagem implements Combate {
   Guerreiro(nome, raca, classe, idade, altura, magico, vida, energia,
       habilidades, this._equipamentos, this._estilo)
       : super(nome, raca, classe, idade, altura, magico, vida, energia,
-            habilidades) {}
+            habilidades) {
+              AtualizarStatus();
+            }
 
   @override
   ExibirFichaPersonagem() {
@@ -40,10 +43,23 @@ class Guerreiro extends Personagem implements Combate {
 
   @override
   void atacar(Personagem alvo) {
-    alvo.setVida = alvo.getVida - 15;
-    alvo.AtualizarStatus();
-    if (alvo.getStatusVida == StatusVida.derrotado) {
-      print("${this.getNome} derrotou ${alvo.getNome}");
+    try {
+      if (alvo.getStatusVida != StatusVida.derrotado) {
+        if (alvo.getVida < 15) {
+          alvo.setVida = 0;
+        } else {
+          alvo.setVida = alvo.getVida - 15;
+        }
+        alvo.AtualizarStatus();
+        alvo.getStatusVida;
+        if (alvo.getStatusVida == StatusVida.derrotado) {
+          print("${this.getNome} derrotou ${alvo.getNome}");
+        }
+      }else{
+        throw PersonagemDerrotadoException();
+      }
+    } on PersonagemDerrotadoException catch (e) {
+      print(e);
     }
   }
 }

@@ -2,6 +2,7 @@ import 'Models/guerreiro.dart';
 import 'Models/mago.dart';
 import 'Models/personagem.dart';
 import 'enums/personagem.dart';
+import 'exceptions/personagem_exceptions.dart';
 
 void main() {
   print("----- Alura Quest -----\n");
@@ -12,10 +13,10 @@ void main() {
       20,
       1.80,
       false,
-      -2,
+      1,
       250,
       ['Golpe esmagador', 'Provocação', 'Investida Furiosa']);
-  personagem1.ExibirFichaPersonagem();
+  //personagem1.ExibirFichaPersonagem();
 
   Guerreiro guerreiro1 = new Guerreiro(
       "Lucas",
@@ -37,20 +38,23 @@ void main() {
       20,
       1.80,
       true,
-      200,
+      0,
       350,
       ['Teletransporte', 'Previsão', 'Batida com cajado'],
       ['cajado gélido', 'manopla de mana']);
 
-  mago1.LancarFeitico("Bola de fogo",Feiticos.fogo);
+  //mago1.LancarFeitico("Bola de fogo", Feiticos.fogo);
   print("------ \n");
+  mago1.AtualizarStatus();
 
-  while (mago1.getStatusVida!= StatusVida.derrotado &&
+  guerreiro1.atacar(mago1);
+
+/*   while (mago1.getStatusVida != StatusVida.derrotado &&
       guerreiro1.getStatusVida != StatusVida.derrotado) {
     guerreiro1.atacar(mago1);
     mago1.atacar(guerreiro1);
-  }
-  guerreiro1.ExibirFichaPersonagem();
+  } */
+  /* guerreiro1.ExibirFichaPersonagem();
   print("------ \n");
   mago1.ExibirFichaPersonagem();
   mago1.AdicionarFeitico(Feiticos.fogo, 20);
@@ -58,5 +62,5 @@ void main() {
   mago1.AdicionarFeitico(Feiticos.gelo, 30);
   for (var feiticos in mago1.getFeiticos.keys) {
     print(feiticos);
-  }
+  } */
 }

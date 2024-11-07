@@ -9,7 +9,9 @@ class Mago extends Personagem implements Combate {
   Mago(nome, raca, classe, idade, altura, magico, vida, energia, habilidades,
       this._equipamentos)
       : super(nome, raca, classe, idade, altura, magico, vida, energia,
-            habilidades) {}
+            habilidades) {
+AtualizarStatus();
+            }
 
   List<String> get getEquipamentos {
     return _equipamentos;
