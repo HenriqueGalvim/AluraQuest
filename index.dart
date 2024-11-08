@@ -2,7 +2,6 @@ import 'Models/guerreiro.dart';
 import 'Models/mago.dart';
 import 'Models/personagem.dart';
 
-
 void main() {
   print("----- Alura Quest -----\n");
   Personagem personagem1 = new Personagem("Henrique", "Humano", "Guerreiro", 20,
@@ -36,6 +35,12 @@ void main() {
   //mago1.LancarFeitico("Bola de fogo", Feiticos.fogo);
   print("------ \n");
   mago1.AtualizarStatus();
+
+  try {
+    guerreiro1.setVida = -1;
+  } catch (e) {
+    print(e);
+  }
 
   guerreiro1.atacar(mago1);
 
